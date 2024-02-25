@@ -4,9 +4,173 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:labs"
+        xmlns:cube="clr-namespace:labs.Cubes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Viewport3D>
+            <Viewport3D.Camera>
+                <!--Установка камеры - перспективная проекция-->
+                <PerspectiveCamera Position="0,0,5" LookDirection="0,0,-2" />
+            </Viewport3D.Camera>
 
+            <Viewport3D.Children>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <!--Установка освещения - прямой свет-->
+                        <DirectionalLight Color="White" Direction="-1,-1,-2" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <GeometryModel3D>
+                            <!--Определяем геометрию объекта-->
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions= "0,0,0 
+                                                            1,0,0 
+                                                            0,1,0 
+                                                            1,1,0 
+                                                            0,0,1 
+                                                            1,0,1 
+                                                            0,1,1 
+                                                            1,1,1"
+                                TriangleIndices="   0,2,1 
+                                                    1,2,3 
+                                                    0,4,2 
+                                                    2,4,6 
+                                                    0,1,4 
+                                                    1,5,4 
+                                                    1,7,5 
+                                                    1,3,7
+                                                    4,5,6 
+                                                    7,6,5 
+                                                    2,6,3 
+                                                    3,6,7
+                                                "/>
+
+                            </GeometryModel3D.Geometry>
+                            <!--Установка материала - красный цвет-->
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Red" />
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                    </ModelVisual3D.Content>
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+         Axis="0,1,0" 
+         Angle="-45" 
+         x:Name="rotateZ"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+           Axis="1,0,0" 
+           Angle="30" 
+           x:Name="rotateX"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+            Axis="0,0,1" 
+            Angle="30" 
+            x:Name="rotateY"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <TranslateTransform3D x:Name="myTranslateTransform11"
+                                                  OffsetX="0.7" OffsetY="0" OffsetZ="0" />
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+
+                </ModelVisual3D>
+
+                <cube:Cube3D x:Name="Cube1"
+                Size="0.5" 
+                Position="-1,0,0" 
+                Front="AliceBlue" 
+                Top="Aquamarine" 
+                Left="Azure" 
+                Back="Bisque" 
+                Bottom="Black" 
+                Right="BlanchedAlmond" >
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <RotateTransform3D CenterX="-0.6">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                                    Axis="1,0,0" 
+                                    Angle="0" 
+                                    x:Name="rotateX2"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D CenterX="-0.6">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                                    Axis="0,1,0" 
+                                    Angle="0" 
+                                    x:Name="rotateY2"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D CenterX="-0.6">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                                    Axis="0,0,1" 
+                                    Angle="0" 
+                                    x:Name="rotateZ2"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+                </cube:Cube3D>
+
+            </Viewport3D.Children>
+
+        </Viewport3D>
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="Grid.MouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+
+                        <DoubleAnimation 
+                          Storyboard.TargetName="rotateX" 
+                          Storyboard.TargetProperty="Angle" 
+                          From="0" To="720" 
+                          Duration="0:0:5"/>
+                        <DoubleAnimation 
+                          Storyboard.TargetName="rotateY" 
+                          Storyboard.TargetProperty="Angle" 
+                          From="0" To="720" 
+                          Duration="0:0:5"/>
+                        <DoubleAnimation 
+                          Storyboard.TargetName="rotateZ" 
+                          Storyboard.TargetProperty="Angle" 
+                          From="0" To="720" 
+                          Duration="0:0:5"/>
+
+
+                        <DoubleAnimation 
+                            Storyboard.TargetName="rotateX2" 
+                            Storyboard.TargetProperty="Angle" 
+                            From="0" To="360" 
+                            Duration="0:0:6"/>
+                        <DoubleAnimation 
+                            Storyboard.TargetName="rotateY2" 
+                            Storyboard.TargetProperty="Angle" 
+                            From="0" To="360" 
+                            Duration="0:0:5"/>
+                        <DoubleAnimation 
+                            Storyboard.TargetName="rotateZ2" 
+                            Storyboard.TargetProperty="Angle" 
+                            From="0" To="360" 
+                            Duration="0:0:6"/>
+
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
     </Grid>
 </Window>
