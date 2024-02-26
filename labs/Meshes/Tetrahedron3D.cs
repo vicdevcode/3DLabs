@@ -128,7 +128,7 @@ namespace labs.Meshes
             Point3D front_left_bottom = new(-absX + pos.X, -absY + pos.Y, absZ + pos.Z);
             Point3D front_right_bottom = new(absX + pos.X, -absY + pos.Y, absZ + pos.Z);
             Point3D top = new(absX + pos.X, absY + pos.Y, absZ + pos.Z);
-            Point3D back = new(-absX + pos.X, -absY + pos.Y, -absZ + pos.Z);
+            Point3D back = new(absX + pos.X, -absY + pos.Y, -absZ + pos.Z);
 
 
             Model3DGroup m3dg = new();
@@ -147,8 +147,8 @@ namespace labs.Meshes
             material = new(left);
             GeometryModel3D faceLeft =
                 AddFace(
-                    front_left_bottom,
                     back,
+                    front_left_bottom,
                     top,
                     material);
             m3dg.Children.Add(faceLeft);
