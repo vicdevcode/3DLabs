@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
 using System.Windows.Media.Media3D;
 
-namespace labs.Cubes
+namespace labs.Meshes
 {
     public class Cube3D : ModelVisual3D
     {

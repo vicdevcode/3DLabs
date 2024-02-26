@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:labs"
-        xmlns:cube="clr-namespace:labs.Cubes"
+        xmlns:mesh="clr-namespace:labs.Meshes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -21,6 +21,7 @@
                         <DirectionalLight Color="White" Direction="-1,-1,-2" />
                     </ModelVisual3D.Content>
                 </ModelVisual3D>
+                
                 <ModelVisual3D>
                     <ModelVisual3D.Content>
                         <GeometryModel3D>
@@ -88,7 +89,7 @@
 
                 </ModelVisual3D>
 
-                <cube:Cube3D x:Name="Cube1"
+                <mesh:Cube3D x:Name="Cube1"
                 Size="0.5" 
                 Position="-1,0,0" 
                 Front="AliceBlue" 
@@ -125,7 +126,44 @@
                             </RotateTransform3D>
                         </Transform3DGroup>
                     </ModelVisual3D.Transform>
-                </cube:Cube3D>
+                </mesh:Cube3D>
+
+                <mesh:Tetrahedron3D x:Name="Tetrahedron1"
+                Size="0.5" 
+                Position="-0.4,0,0" 
+                Front="Red" 
+                Left="#FF0004FF" 
+                Bottom="#FFFDFF00" 
+                Right="#FF00FF10" >
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <RotateTransform3D CenterX="-0.6">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                                    Axis="1,0,0" 
+                                    Angle="0" 
+                                    x:Name="rotateX3"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D CenterX="-0.6">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                                    Axis="0,1,0" 
+                                    Angle="0" 
+                                    x:Name="rotateY3"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D CenterX="-0.6">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                                    Axis="0,0,1" 
+                                    Angle="0" 
+                                    x:Name="rotateZ3"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+                </mesh:Tetrahedron3D>
 
             </Viewport3D.Children>
 
@@ -164,6 +202,22 @@
                             Duration="0:0:5"/>
                         <DoubleAnimation 
                             Storyboard.TargetName="rotateZ2" 
+                            Storyboard.TargetProperty="Angle" 
+                            From="0" To="360" 
+                            Duration="0:0:6"/>
+
+                        <DoubleAnimation 
+                            Storyboard.TargetName="rotateX3" 
+                            Storyboard.TargetProperty="Angle" 
+                            From="0" To="360" 
+                            Duration="0:0:6"/>
+                        <DoubleAnimation 
+                            Storyboard.TargetName="rotateY3" 
+                            Storyboard.TargetProperty="Angle" 
+                            From="0" To="360" 
+                            Duration="0:0:5"/>
+                        <DoubleAnimation 
+                            Storyboard.TargetName="rotateZ3" 
                             Storyboard.TargetProperty="Angle" 
                             From="0" To="360" 
                             Duration="0:0:6"/>
