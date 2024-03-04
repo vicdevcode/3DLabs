@@ -192,12 +192,16 @@ Position="-0.7,0.6,0"
                     x:Name="rotateZ11"/>
                                 </RotateTransform3D.Rotation>
                             </RotateTransform3D>
+                            <TranslateTransform3D x:Name="myTranslateTransform11"
+                                                  OffsetX="3" OffsetY="0" OffsetZ="-7" />
+
                         </Transform3DGroup>
                     </ModelVisual3D.Transform>
                 </mesh:Sphere>
 
                 <mesh:Parallelepiped x:Name="Parallelepiped1"
-Position="1,0,0" 
+Position="0,-0.7,0"
+                                     Size="0.3,0.5,0.3"
 Front="red" 
 Top="blue" 
 Left="yellow" 
@@ -206,7 +210,7 @@ Bottom="green"
 Right="orange" >
                     <ModelVisual3D.Transform>
                         <Transform3DGroup>
-                            <RotateTransform3D CenterX="1">
+                            <RotateTransform3D CenterY="-0.7">
                                 <RotateTransform3D.Rotation>
                                     <AxisAngleRotation3D 
                     Axis="1,0,0" 
@@ -214,7 +218,7 @@ Right="orange" >
                     x:Name="rotateX7"/>
                                 </RotateTransform3D.Rotation>
                             </RotateTransform3D>
-                            <RotateTransform3D CenterX="1">
+                            <RotateTransform3D CenterY="-0.7">
                                 <RotateTransform3D.Rotation>
                                     <AxisAngleRotation3D 
                     Axis="0,1,0" 
@@ -222,7 +226,7 @@ Right="orange" >
                     x:Name="rotateY7"/>
                                 </RotateTransform3D.Rotation>
                             </RotateTransform3D>
-                            <RotateTransform3D CenterX="1">
+                            <RotateTransform3D CenterY="-0.7">
                                 <RotateTransform3D.Rotation>
                                     <AxisAngleRotation3D 
                     Axis="0,0,1" 
