@@ -129,8 +129,8 @@ namespace labs.Meshes
             // 4 Верхняя задняя
             GeometryModel3D faceTopBack =
                 AddFace(
-                    middle_back,
                     middle_right,
+                    middle_back,
                     _top,
                     material);
             m3dg.Children.Add(faceTopBack);
