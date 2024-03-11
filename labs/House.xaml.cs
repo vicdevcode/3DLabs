@@ -15,16 +15,11 @@ using System.Windows.Shapes;
 
 namespace labs
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class House : Window
     {
-        public MainWindow()
+        public House()
         {
             InitializeComponent();
-            House w = new House();
-            w.Show();
         }
     }
 }

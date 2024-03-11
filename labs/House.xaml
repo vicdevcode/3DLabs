@@ -1,0 +1,121 @@
+﻿<Window x:Class="labs.House"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mesh="clr-namespace:labs.Meshes"
+        mc:Ignorable="d"
+        Title="House" Height="450" Width="800">
+    <Grid>
+        <Viewport3D>
+            <Viewport3D.Camera>
+                <!--Установка камеры - перспективная проекция-->
+                <PerspectiveCamera Position="0,0,5" LookDirection="0,0,-2" />
+            </Viewport3D.Camera>
+
+            <Viewport3D.Children>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <!--Установка освещения - прямой свет-->
+                        <AmbientLight Color="White" />
+
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+
+                <mesh:House3D x:Name="House1"
+                Size="0.8" 
+                Position="0,0,0" 
+                Front="red" 
+                Top="blue" 
+                Left="yellow" 
+                Back="purple" 
+                Bottom="green" 
+                Right="orange" >
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                                    Axis="1,0,0" 
+                                    Angle="0" 
+                                    x:Name="rotateX"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                                    Axis="0,1,0" 
+                                    Angle="0" 
+                                    x:Name="rotateY"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+               
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+                </mesh:House3D>
+
+                <mesh:Roof x:Name="Prism1"
+ Size="1.7" 
+ Position="-0.72,-0.72,-0.68" 
+ Front="red" 
+ Top="blue" 
+ Left="yellow" 
+ Back="purple" 
+ Bottom="green" 
+ Right="orange" >
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <RotateTransform3D CenterX="-0.425" CenterY="-0.425" CenterZ="-0.25">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                     Axis="1,1,0" 
+                     Angle="0" 
+                     x:Name="rotateX1"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D CenterX="-0.425" CenterY="-0.425" CenterZ="-0.25">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                     Axis="0,1,0" 
+                     Angle="0" 
+                     x:Name="rotateY1"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D 
+                     Axis="0,0,1" 
+                     Angle="225" 
+                     x:Name="rotateZ1"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+                </mesh:Roof>
+
+
+            </Viewport3D.Children>
+
+        </Viewport3D>
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="Grid.MouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation 
+                          Storyboard.TargetName="rotateY" 
+                          Storyboard.TargetProperty="Angle" 
+                          From="0" To="720" 
+                          Duration="0:0:5"/>
+                        <DoubleAnimation 
+                          Storyboard.TargetName="rotateX1" 
+                          Storyboard.TargetProperty="Angle" 
+                          From="0" To="-720" 
+                          Duration="0:0:5"/>
+
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
+    </Grid>
+</Window>
